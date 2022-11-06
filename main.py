@@ -37,4 +37,3 @@ with open ('vehiclenames.txt') as file:
     for i in k:
         if i==text:
             print("The vehicle is registered")
-    
