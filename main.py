@@ -3,7 +3,7 @@ from matplotlib import pyplot as plt
 import numpy as np
 import imutils
 import easyocr
-img = cv2.imread('image1.jpg')
+img = cv2.imread('image2.jpg')
 gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 bfilter = cv2.bilateralFilter(gray, 11, 17, 17) #Noise reduction
 edged = cv2.Canny(bfilter, 25, 200) #Edge detection
@@ -32,3 +32,9 @@ font = cv2.FONT_HERSHEY_SIMPLEX
 res = cv2.putText(img, text=text, org=(approx[0][0][0], approx[1][0][1]+60), fontFace=font, fontScale=1, color=(0,255,0), thickness=2, lineType=cv2.LINE_AA)
 res = cv2.rectangle(img, tuple(approx[0][0]), tuple(approx[2][0]), (0,255,0),3)
 plt.imshow(cv2.cvtColor(res, cv2.COLOR_BGR2RGB))
+with open ('vehiclenames.txt') as file:
+    k=file.readlines()
+    for i in k:
+        if i==text:
+            print("The vehicle is registered")
+    
